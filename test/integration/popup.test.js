@@ -3,26 +3,11 @@ import Popup from '../../src/js/popup.js'
 
 describe('creation of new search source', () => {
   beforeEach(() => {
-    chrome.storage.local.get.mockImplementation((message, callback) => {
-      const mockedData = '[{"title":"new_site","url":"www.sample.com/q=####"}]'
-      callback({ unversal_search_sources: mockedData })
-    })
-    chrome.storage.local.set.mockImplementation((message, callback) => callback())
-
-    document.body.innerHTML =
-      '<form id="add_search_source">' +
-      '</form>'
-
+    mockLocalStorage()
+    createHtmlPage()
+    
     const form = document.getElementById("add_search_source")
-    form.addEventListener('submit', event => {
-      Object.defineProperty(event, "target", {
-        value: { title: { value: 'new_site' }, url: { value: 'www.sample.com/q=####' } },
-        writable: false,
-        configurable: false
-      })
-
-      return true
-    })
+    mockHtmlForm(form)
 
     document.dispatchEvent(new Event('DOMContentLoaded'));
     form.dispatchEvent(new Event('submit'))
@@ -44,3 +29,29 @@ describe('creation of new search source', () => {
     })
   })
 })
+
+function mockLocalStorage() {
+	chrome.storage.local.get.mockImplementation((message, callback) => {
+		const mockedData = '[{"title":"new_site","url":"www.sample.com/q=####"}]'
+		callback({ unversal_search_sources: mockedData })
+	})
+	chrome.storage.local.set.mockImplementation((message, callback) => callback())
+}
+
+function createHtmlPage() {
+  document.body.innerHTML =
+  '<form id="add_search_source">' +
+  '</form>'
+}
+
+function mockHtmlForm(form) {
+  form.addEventListener('submit', event => {
+    Object.defineProperty(event, "target", {
+      value: { title: { value: 'new_site' }, url: { value: 'www.sample.com/q=####' } },
+      writable: false,
+      configurable: false
+    })
+
+    return true
+  })
+}
