@@ -4,5 +4,20 @@
 	},
 	"extension_description": {
 		"message": "Поиск по выделенному тексту на любых сайтах"
+	},
+	"title_label": {
+		"message": "Имя"
+	},
+	"title_placeholder": {
+		"message": "Имя для контекстного меню"
+	},
+	"url_label": {
+		"message": "Адрес"
+	},
+	"url_placeholder": {
+		"message": "www.example.com/search=####"
+	},
+	"add_source_btn": {
+		"message": "Добавить"
 	}
 }

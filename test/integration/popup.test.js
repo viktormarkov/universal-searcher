@@ -24,7 +24,7 @@ describe('creation of new search source', () => {
       return true
     })
 
-    document.dispatchEvent(new Event("DOMContentLoaded"));
+    document.dispatchEvent(new Event('DOMContentLoaded'));
     form.dispatchEvent(new Event('submit'))
   })
 
