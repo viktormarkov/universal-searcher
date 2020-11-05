@@ -1,13 +1,14 @@
 # Universal Searcher
 Chrome extension for seaching selected text on any websites.
 
-1) Add url with "####"
+### About
+1) Add url with "####". 4 hash symbols will be replaced by a selected text.
 <img src="https://user-images.githubusercontent.com/10694206/98250062-0f70dc00-1f88-11eb-9abe-1dbbd859de15.png" width="400">
 
-2) Select text and pick a source
+2) Select text and pick a source.
 <img src="https://user-images.githubusercontent.com/10694206/98250114-1d266180-1f88-11eb-8658-9e0667700988.png" width="400">
-3) "####" symbols will be replaced by a selected text and you will see new tab with
-https://www.imdb.com/q=pulp%20fiction
+
+3) https://www.imdb.com/q=pulp%20fiction will be opened in a new tab.
 
 ### Setup
 1) Build extension with ```yarn build```
