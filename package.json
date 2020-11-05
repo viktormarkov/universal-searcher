@@ -1,0 +1,18 @@
+{
+  "name": "universal-searcher",
+  "version": "0.5",
+  "license": "MIT",
+  "scripts": {
+    "prebuild": "rm -rf dist/ .cache/ && mkdir dist/",
+    "watch": "yarn prebuild && parcel watch --no-hmr src/manifest.json",
+    "build": "parcel build src/manifest.json",
+    "test": "jest"
+  },
+  "browserslist": "> 0.25%, not dead",
+  "devDependencies": {
+    "jest": "^26.6.2",
+    "jest-chrome": "^0.7.0",
+    "parcel": "^1.12.4",
+    "parcel-plugin-web-extension": "^1.6.1"
+  }
+}
