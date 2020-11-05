@@ -7,7 +7,7 @@ describe('initialization of context menu', () => {
       const mockedData = '[{"title":"my_title","url":"www.example.com/search=####"}]'
       callback({ unversal_search_sources: mockedData })
     })
-    document.dispatchEvent(new Event("DOMContentLoaded"))
+    document.dispatchEvent(new Event('DOMContentLoaded'))
 
     expect(chrome.contextMenus.create).toBeCalledWith({
       id: 'www.example.com/search=####',
@@ -19,7 +19,7 @@ describe('initialization of context menu', () => {
 
 describe('search event handlers', () => {
   beforeAll(() => {
-    document.dispatchEvent(new Event("DOMContentLoaded"))
+    document.dispatchEvent(new Event('DOMContentLoaded'))
   });
 
   test('context menu has click listener', () => {

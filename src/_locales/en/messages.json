@@ -4,5 +4,20 @@
 	},
 	"extension_description": {
 		"message": "Search by selected text on any websites"
+	},
+	"title_label": {
+		"message": "Title"
+	},
+	"title_placeholder": {
+		"message": "Title for context menu"
+	},
+	"url_label": {
+		"message": "Url"
+	},
+	"url_placeholder": {
+		"message": "www.example.com/search=####"
+	},
+	"add_source_btn": {
+		"message": "Add"
 	}
 }
