@@ -1,4 +1,4 @@
-import { getSearchSources, setSearchSource } from '../../src/js/storage.js'
+import storage from '../../src/js/storage.js'
 import { chrome } from 'jest-chrome'
 
 beforeEach(() => {
@@ -8,10 +8,10 @@ beforeEach(() => {
   })
 });
 
-describe('getSearchSources', () => {
+describe('#getSearchSources', () => {
   describe('with previosly saved search sources', () => {
     test('should return array of previosly saved search sources', () => {
-      getSearchSources((sources) => {
+      storage.getSearchSources((sources) => {
         expect(sources).toStrictEqual([{ title: 'my_title', url: 'www.example.com/search=####' }])
       })
     })
@@ -25,18 +25,29 @@ describe('getSearchSources', () => {
     })
 
     test('should return empty array', () => {
-      getSearchSources((sources) => expect(sources).toEqual([]))
+      storage.getSearchSources((sources) => expect(sources).toEqual([]))
     })
   })
 })
 
-describe('setSearchSource', () => {
+describe('#setSearchSource', () => {
   test('should add new source to the array of previosly saved search sources', () => {
     chrome.storage.local.set.mockImplementation((message, callback) => {
       expect(message).toStrictEqual({
         unversal_search_sources: '[{"title":"my_title","url":"www.example.com/search=####"},{"title":"new_title","url":"www.sample.com/q=####"}]'
       })
     })
-    setSearchSource({ title: 'new_title', url: 'www.sample.com/q=####' }, () => {})
+    storage.setSearchSource({ title: 'new_title', url: 'www.sample.com/q=####' }, () => {})
+  })
+})
+
+describe('#removeSearchSource', () => {
+  test('should remove source from the array of previosly saved search sources', () => {
+    chrome.storage.local.set.mockImplementation((message, callback) => {
+      expect(message).toStrictEqual({
+        unversal_search_sources: '[]'
+      })
+    })
+    storage.removeSearchSource({ title: 'my_title', url: 'www.example.com/search=####' }, () => {})
   })
 })

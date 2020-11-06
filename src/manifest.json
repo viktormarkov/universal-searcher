@@ -23,5 +23,9 @@
       "48": "/assets/search-icon-48.png",
       "128": "/assets/search-icon-128.png"
     }
+  },
+  "options_ui": {
+    "page": "html/options.html",
+    "open_in_tab": false
   }
 }

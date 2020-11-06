@@ -6,11 +6,22 @@ function getSearchSources(callback) {
   })
 }
 
+function setSearchSources(sources, callback) {
+  chrome.storage.local.set({ unversal_search_sources: JSON.stringify(sources) }, callback)
+}
+
 function setSearchSource(source, callback) {
-  getSearchSources(function (sources) {
+  getSearchSources(sources => {
     sources.push(source)
-    chrome.storage.local.set({ unversal_search_sources: JSON.stringify(sources) }, callback)
+    setSearchSources(sources, callback)
   })
 }
 
-export { getSearchSources, setSearchSource }
+function removeSearchSource(source, callback) {
+  getSearchSources(sources => {
+    sources = sources.filter(val => val.url !== source.url)
+    setSearchSources(sources, callback)
+  })
+}
+
+export default { getSearchSources, setSearchSource, removeSearchSource }

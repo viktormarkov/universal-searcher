@@ -19,5 +19,14 @@
   },
   "add_source_btn": {
     "message": "Добавить"
+  },
+  "options_title": {
+    "message": "Настройки"
+  },
+  "search_sources_title": {
+    "message": "Источники поиска:"
+  },
+  "remove": {
+    "message": "Удалить"
   }
 }
