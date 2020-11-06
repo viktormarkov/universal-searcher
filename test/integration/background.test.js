@@ -1,5 +1,5 @@
 import { chrome } from 'jest-chrome'
-import Background from '../../src/js/background.js'
+import background from '../../src/js/background.js'
 
 describe('initialization of context menu', () => {
   test('already existed search sources should be added as menu items', () => {

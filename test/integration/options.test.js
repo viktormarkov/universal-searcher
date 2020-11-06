@@ -1,13 +1,13 @@
 import { chrome } from 'jest-chrome'
-import popup from '../../src/js/popup.js'
+import options from '../../src/js/options.js'
 
 beforeEach(() => {
   createHtmlPage()
+  mockLocalStorage()
 })
 
 describe('creation of new search source', () => {
   beforeEach(() => {
-    mockLocalStorage()
     const form = document.getElementById("add_search_source")
     mockHtmlForm(form)
     document.dispatchEvent(new Event('DOMContentLoaded'));
@@ -29,17 +29,33 @@ describe('creation of new search source', () => {
       contexts: ["selection"]
     })
   })
+
+  test('should create new html list item', () => {
+    const list = document.getElementById("search_sources")
+    expect(list.innerHTML).toMatch(/new_site/)
+  })
 })
 
-describe('options btn', () => {
+describe('removing of a search source', () => {
   beforeEach(() => {
-    chrome.runtime.openOptionsPage.mockImplementation(() => {})
     document.dispatchEvent(new Event('DOMContentLoaded'));
-    document.getElementById("options_btn").click()
   })
 
-  test('should open options page', () => {
-    expect(chrome.runtime.openOptionsPage).toBeCalled()
+  test('should remove item from storage', () => {
+    const removeBtn = document.getElementsByTagName('li')[0].childNodes[1]
+    removeBtn.dispatchEvent(new Event('click'))
+    expect(chrome.contextMenus.remove).toBeCalled()
+  })
+})
+
+describe('initialization', () => {
+  beforeEach(() => {
+    document.dispatchEvent(new Event('DOMContentLoaded'));
+  })
+
+  test('should display existed sources', () => {
+    const list = document.getElementById("search_sources")
+    expect(list.children.length).toBe(1)
   })
 })
 
@@ -57,6 +73,7 @@ function createHtmlPage() {
     <form id="add_search_source">
     </form>
     <input id="options_btn" type="button"/>
+    <ul id="search_sources"></ul>
   `
 }
 

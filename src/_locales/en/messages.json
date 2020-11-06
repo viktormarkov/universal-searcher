@@ -19,5 +19,14 @@
   },
   "add_source_btn": {
     "message": "Add"
+  },
+  "options_title": {
+    "message": "Options"
+  },
+  "search_sources_title": {
+    "message": "Search sources:"
+  },
+  "remove": {
+    "message": "Remove"
   }
 }

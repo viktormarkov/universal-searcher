@@ -1,13 +1,15 @@
 import { chrome } from 'jest-chrome'
-import Internationalization from '../../src/js/internationalization.js'
+import localization from '../../src/js/html_localization.js'
 
 describe('internationalization', () => {
   beforeEach(() => {
     document.body.innerHTML =
-    '<html>' +
-    '<label id="title_lable_id" for="title_id">__MSG_title_label__</label>' +
-    '<input id="title_id" placeholder="__MSG_title_placeholder__" />' +
-    '</html>'
+    `
+      <html>
+      <label id="title_lable_id" for="title_id">__MSG_title_label__</label>
+      <input id="title_id" placeholder="__MSG_title_placeholder__" />
+      </html>
+    `
 
     chrome.i18n.getMessage.mockImplementation(key => {
       switch(key) {

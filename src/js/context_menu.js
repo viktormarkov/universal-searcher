@@ -6,8 +6,12 @@ function createMenuItem(source) {
   })
 }
 
-function setMenuItemOnClickedListener(listener) {
+function removeMenuItem(source, callback) {
+  chrome.contextMenus.remove(source.url, callback)
+}
+
+function setMenuItemClickedListener(listener) {
   chrome.contextMenus.onClicked.addListener(listener)
 }
 
-export { createMenuItem, setMenuItemOnClickedListener }
+export default { createMenuItem, removeMenuItem ,setMenuItemClickedListener }
