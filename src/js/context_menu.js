@@ -14,4 +14,4 @@ function setMenuItemClickedListener(listener) {
   chrome.contextMenus.onClicked.addListener(listener)
 }
 
-export default { createMenuItem, removeMenuItem ,setMenuItemClickedListener }
+export default { createMenuItem, removeMenuItem, setMenuItemClickedListener }

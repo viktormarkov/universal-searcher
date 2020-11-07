@@ -26,7 +26,7 @@ function displaySearchSources() {
   })
 }
 
-function addSourceToHtmlList(list, source) { 
+function addSourceToHtmlList(list, source) {
   list.appendChild(createListItemElement(source));
 }
 

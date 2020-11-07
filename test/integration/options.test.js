@@ -60,21 +60,21 @@ describe('initialization', () => {
 })
 
 function mockLocalStorage() {
-	chrome.storage.local.get.mockImplementation((message, callback) => {
-		const mockedData = '[{"title":"new_site","url":"www.sample.com/q=####"}]'
-		callback({ unversal_search_sources: mockedData })
-	})
-	chrome.storage.local.set.mockImplementation((message, callback) => callback())
+  chrome.storage.local.get.mockImplementation((message, callback) => {
+    const mockedData = '[{"title":"new_site","url":"www.sample.com/q=####"}]'
+    callback({ unversal_search_sources: mockedData })
+  })
+  chrome.storage.local.set.mockImplementation((message, callback) => callback())
 }
 
 function createHtmlPage() {
   document.body.innerHTML =
-  `
+    `
     <form id="add_search_source">
     </form>
     <input id="options_btn" type="button"/>
     <ul id="search_sources"></ul>
-  `
+   `
 }
 
 function mockHtmlForm(form) {
